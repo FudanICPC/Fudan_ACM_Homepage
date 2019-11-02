@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Fudan ICPC",
+  "name": "复旦大学ACM-ICPC队主页",
   "icons": [
     {
-      "src": "source/fudan.jpg",
+      "src": "/source/fudan.jpg",
       "sizes": "192x192",
       "type": "image/jpg"
     }
