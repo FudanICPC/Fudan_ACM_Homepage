@@ -37,8 +37,8 @@ export default class extends Component {
         top_announce.push(e)
       }
     }
-    top_announce.sort((e1, e2) => e1.postTimeDate > e2.postTimeDate)
-    announce.sort((e1, e2) => e1.postTimeDate > e2.postTimeDate)
+    top_announce.sort((e1, e2) => e2.postTimeDate - e1.postTimeDate)
+    announce = announce.sort((e1, e2) => e2.postTimeDate - e1.postTimeDate) //* 注意应该返回正负数和0
     this.state = {
       top_announce: top_announce,
       announce: announce
