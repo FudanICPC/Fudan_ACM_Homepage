@@ -1,6 +1,6 @@
 # Fudan_ACM_Homepage
 
-Fudan University ACM-ICPC website.
+Fudan University Programming Contest Team website.
 
 部署时应该将www中的port改为80。
 
