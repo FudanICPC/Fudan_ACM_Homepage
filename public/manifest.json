@@ -1,9 +1,9 @@
 {
-  "short_name": "Fudan ICPC",
-  "name": "复旦大学ACM-ICPC队主页",
+  "short_name": "FDUPC",
+  "name": "复旦大学程序设计竞赛",
   "icons": [
     {
-      "src": "/source/fudan.jpg",
+      "src": "/source/fudan.ico",
       "sizes": "192x192",
       "type": "image/jpg"
     }

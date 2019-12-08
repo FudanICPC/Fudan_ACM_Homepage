@@ -64,15 +64,21 @@ const sponsor = [
 
 export default class extends Component {
   render() {
-    console.log('欢迎来到Fudan ACM-ICPC队主页。Create by lzmhhh123，https://github.com/lzmhhh123')
+    console.log('欢迎来到复旦大学程序设计竞赛队主页。Create by lzmhhh123，https://github.com/lzmhhh123')
     console.log('Update by ztx97，https://github.com/zhangtianxiang')
     return (
       <div>
-        <Divider><Title level={1} className='essay__title__h1'>复旦大学ICPC</Title></Divider>
+        <Divider >
+          <div style={{ textAlign: 'center' }}>
+            <Title level={1} className='homepage__title'>复旦大学</Title>
+            <Title level={1} className='homepage__title'>程序设计竞赛</Title>
+          </div>
+        </Divider>
+
         <div style={{ textAlign: 'center' }}>
-          <Text className='essay__text'>欢迎光临复旦大学ACM-ICPC队官方主页<br />
-            复旦大学ACM-ICPC队是一支有优良传统和光辉历史的竞赛队伍<br />
-            未来，复旦大学ACM-ICPC队将再接再厉，为学校赢得更多的荣誉</Text>
+          <Text className='essay__text'>欢迎光临复旦大学程序设计竞赛队官方主页<br />
+            复旦大学程序设计竞赛队是一支有优良传统和光辉历史的竞赛队伍<br />
+            未来，复旦大学程序设计竞赛队将再接再厉，为学校赢得更多的荣誉</Text>
         </div>
         <Divider><Title level={1} className='essay__title__h2'>我们的历程</Title></Divider>
         <YearDiv />

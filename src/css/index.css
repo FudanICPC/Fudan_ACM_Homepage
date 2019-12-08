@@ -44,7 +44,6 @@ body {
     color: #464646 !important;
     line-height: 1.8 !important;
     font-family: Microsoft Yahei, sans-serif;
-    text-align: left;
 }
 
 .essay__title__h2 {
@@ -54,9 +53,16 @@ body {
     font-weight: 500 !important;
     font-family: Microsoft Yahei, sans-serif;
     opacity: 0.8;
-    text-align: left;
 }
 
+.homepage__title {
+    font-size: 3em !important;
+    color: #464646 !important;
+    line-height: 1.0 !important;
+    font-family: Microsoft Yahei, sans-serif;
+    margin-top: 0.2em !important;
+    margin-bottom: 0em !important;
+}
 
 /* 文章右对齐 */
 

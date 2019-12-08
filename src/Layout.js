@@ -56,7 +56,7 @@ class Navbar extends Component {
     return (
       <nav className='menu'>
         <a className='menu__logo' href='/' onClick={(e) => { e.preventDefault(); this.props.history.push('/') }}>
-          <img src='/source/fudan.jpg' alt='fudan' height={48} width={48} style={{ marginTop: 16 }} />
+          <img src='/source/fudan.png' alt='fudan' height={32} width={32} style={{ marginTop: 16 }} />
           <img src='/source/acm.png' alt='acm' height={48} width={80} style={{ marginTop: 16, marginLeft: 10 }} />
         </a>
         <div className='menu__container'>
@@ -67,7 +67,7 @@ class Navbar extends Component {
             <Icon type='align-right' />
           </Button>
           <Drawer
-            title='复旦大学ICPC'
+            title='复旦大学程序设计竞赛'
             placement='left'
             className='menu_drawer'
             closable={false}
