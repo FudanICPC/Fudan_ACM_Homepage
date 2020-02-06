@@ -18,17 +18,19 @@ class YearDiv extends Component {
     return (
       <div style={{ maxWidth: '1000px', margin: 'auto', marginTop: '10px' }}>
         <Steps current={current} progressDot style={{ overflowX: 'auto', paddingTop: '10px' }}>
-          <Step title='2019' onClick={() => this.setState({ current: 0 })}
+          <Step title='2020' onClick={() => this.setState({ current: 0 })}
+            description='World Final@Porto; Person@a,b,c,d' />
+          <Step title='2019' onClick={() => this.setState({ current: 1 })}
             description='World Final@Porto; Person@Xuanyu Wang, Mingjian Wu, Weiwei Sun, Minghong Gao' />
-          <Step title='2018' onClick={() => this.setState({ current: 1 })}
+          <Step title='2018' onClick={() => this.setState({ current: 2 })}
             description='World Final@Peking; Person@Dongjian Tang, Zhihao Ma, Weiwei Sun, Xi Gao' />
-          <Step title='2017' onClick={() => this.setState({ current: 2 })}
+          <Step title='2017' onClick={() => this.setState({ current: 3 })}
             description='World Final@Rapid City; Person@Dongjian Tang, Zhihao Ma, Weiwei Sun, Xi Gao' />
-          <Step title='2016' onClick={() => this.setState({ current: 3 })}
+          <Step title='2016' onClick={() => this.setState({ current: 4 })}
             description='World Final@Phuket; Person@Ziyang Chen, Jinyue Su, Weiwei Sun, Haoming Xing' />
-          <Step title='2015' onClick={() => this.setState({ current: 4 })}
+          <Step title='2015' onClick={() => this.setState({ current: 5 })}
             description='World Final@Marrakesh; Person@Haoming Xing, Yanming Liu, Weiwei Sun, Yue Yang' />
-          <Step title='2014' onClick={() => this.setState({ current: 5 })}
+          <Step title='2014' onClick={() => this.setState({ current: 6 })}
             description='World Final@Екатеринбу́рг; Person@Ziyang Chen, Lu Liu, Weiwei Sun, Qilin Dong' />
           <Step title={<Link to={location => ({ ...location, pathname: '/announcement' })}>see more</Link>} />
         </Steps>
