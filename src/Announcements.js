@@ -34,7 +34,7 @@ export default class extends Component {
       e.link = '/announcement/' + key
       announce.push(e)
       if (e.isTop) {
-         top_announce.push(e)
+        top_announce.push(e)
       }
     }
     top_announce.sort((e1, e2) => e2.postTimeDate - e1.postTimeDate)
