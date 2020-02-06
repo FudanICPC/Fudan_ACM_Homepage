@@ -36,9 +36,6 @@ export default class extends Component {
       if (e.isTop) {
          top_announce.push(e)
       }
-      else{
-      //  announce.push(e)
-      }
     }
     top_announce.sort((e1, e2) => e2.postTimeDate - e1.postTimeDate)
     announce = announce.sort((e1, e2) => e2.postTimeDate - e1.postTimeDate) //* 注意应该返回正负数和0
