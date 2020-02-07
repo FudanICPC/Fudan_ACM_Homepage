@@ -61,7 +61,7 @@ export default class extends Component {
       <div className='main__container'>
         <div className='main__content'>
           <Layout>
-            <Layout.Sider breakpoint='lg' collapsedWidth='0' trigger={null} style={{ backgroundColor: '#ececec' }}>
+            <Layout.Sider width = '100' breakpoint='lg' collapsedWidth='0' trigger={null} style={{ backgroundColor: '#ececec' }}>
               <Anchor affix={false}>
                 {
                   teamAll.map((teamYear, idx) => {
