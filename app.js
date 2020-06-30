@@ -1,7 +1,16 @@
 var express = require('express')
 var path = require('path')
-
+var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser');
 var app = express()
+
+var router = require('./router/send')
+//app.use(express.json())
+
+app.use(bodyParser.json({limit : '100mb'}))
+app.use(bodyParser.urlencoded({limit : '100mb', extended: false}))
+app.use(cookieParser());
+app.use('/send', router)
 
 app.use('/', express.static(path.join(__dirname, 'build')))
 app.get('/*', (req, res) => {
