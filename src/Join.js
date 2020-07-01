@@ -4,6 +4,8 @@ import { Form, Input, Select, Button, Typography } from 'antd'
 import 'antd/dist/antd.css'
 import './css/index.css'
 
+var debounce = require('debounce')
+
 const { Option } = Select
 const { Title } = Typography
 
@@ -24,18 +26,21 @@ const tailLayout = {
 };
 
 export default class extends Component {
-/*    constructor(props) {
-        super(props);
-        this.state = {value: ''};
-      }
-  */    
     formRef = React.createRef();
+    constructor(props) {
+        super(props)
+        this.handleSubmit = debounce(this.handleSubmit, 5000)
+    }
 
     onReset = () => {
         this.formRef.current.resetFields();
     }
 
-    onFinish = values => {
+    onFinish = (values) => {
+        this.handleSubmit(values)
+    }
+
+    handleSubmit = values => {
         axios.post('/send', { 
             data : values
         }
