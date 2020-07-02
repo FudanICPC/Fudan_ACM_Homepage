@@ -30,7 +30,7 @@
     "win_prod": "set NODE_ENV=production&& node ./bin/www",
     "linux_prod": "NODE_ENV=production node ./bin/www",
     "pm2_prod": "NODE_ENV=production pm2 start ./bin/www -n Fudan_ACM_Homepage",
-    "start": "node ./bin/www",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
