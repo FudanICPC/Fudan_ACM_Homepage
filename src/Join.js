@@ -42,7 +42,9 @@ export default class extends Component {
                 this.onReset()
             } else if (response.data.msg === 'captchaError'){
                 alert('验证码错误。请检查或更新验证码。')
-            } else if (response.data.msg === 'fail'){
+            } else if (response.data.msg === 'robotWarn'){
+                alert('操作异常。')
+            } else {
                 alert('请重新提交。')
             }
         }).catch(function (error) {
@@ -75,9 +77,12 @@ export default class extends Component {
                 "data" : {"email" : mail}
             }
             ).then((response)=>{
+                console.log(response.data.msg)
                 if (response.data.msg === 'success'){
-                    alert('已发送验证码，请查看邮箱。')
-                } else if (response.data.msg === 'fail'){
+                    alert('已发送验证码，请查看邮箱。') 
+                } else if (response.data.msg === 'robotWarn'){
+                    alert('操作异常。')
+                } else {
                     alert('验证码发送错误。请再次尝试。')
                 }
             }).catch(function (error) {

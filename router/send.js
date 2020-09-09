@@ -3,16 +3,17 @@ var router = express.Router();
 var bodyParser = require('body-parser')
 var mailer = require('./mailer.js')
 var moment = require('moment');
-// var connection = require('./database.js');
 var SqliteDB = require('./database.js').SqliteDB
 
 var db  = new SqliteDB('acm.db')
 db.createTable()
 
-var createTableSql = "CREATE TABLE IF NOT EXISTS CAPTCHA(EMAIL STRING, CAPTCHACODE STRING, REQ_TIME DATETIME, AVAILABLE INTEGER)"
+var createTableSql = "CREATE TABLE IF NOT EXISTS CAPTCHA(EMAIL STRING, CAPTCHACODE STRING, REQ_TIME DATETIME, AVAILABLE INTEGER, IP_ADDRESS STRING)"
 var sql_get_existed_captcha = "SELECT CAPTCHACODE FROM CAPTCHA WHERE EMAIL = ?"
+var sql_check_account = "SELECT AVAILABLE FROM CAPTCHA WHERE EMAIL = ?"
+var sql_check_ip = "SELECT AVAILABLE FROM CAPTCHA WHERE IP_ADDRESS = ?"
 var sql_get_available_captcha = "SELECT CAPTCHACODE FROM CAPTCHA WHERE EMAIL = ? AND TIMESTAMPDIFF(MINUTE, REQ_TIME, ?) <= 5 AND AVAILABLE"
-var sql_update_captcha = "UPDATE CAPTCHA SET CAPTCHACODE = ?, REQ_TIME = ?, AVAILABLE = ? WHERE EMAIL = ?"
+var sql_update_captcha = "UPDATE CAPTCHA SET CAPTCHACODE = ?, REQ_TIME = ?, AVAILABLE = AVAILABLE + ? WHERE EMAIL = ?"
 var sql_insert_captcha = "INSERT INTO CAPTCHA (EMAIL, CAPTCHACODE, REQ_TIME, AVAILABLE) VALUES(?, ?, ?, ?)"
 var sql_delete_captcha = "DELETE FROM CAPTCHA WHERE EMAIL = ?"
 
@@ -25,20 +26,27 @@ router.post('/captcha', (req, res, next) => {
   var receiver = req.body.data.email
   var captchaCode = ""
   for (var i = 0; i < 6; i++)
-    captchaCode += Math.floor(Math.random() * 10)
-  var req_time = moment().format("YYYY-MM-DD HH:mm:ss")
-
+    if (i == 0) captchaCode += Math.max(1, Math.floor(Math.random()*10));
+    else captchaCode += Math.floor(Math.random() * 10)
+  // var req_time = moment().format("YYYY-MM-DD HH:mm:ss")
+  // console.log(res)
   console.log(receiver, captchaCode, req_time)
-  db.queryExistedData({email: receiver, captchaCode: captchaCode, req_time: req_time, available: 1}, solution)
+  db.queryExistedData({email: receiver, captchaCode: captchaCode, req_time: req_time, available: 1, ip: req.ip}, solution)
   function solution(stat) {
     var content = `同学你好:\n` + 
                   `你的验证码为: ${captchaCode}\n` 
-    console.log(stat)
+    // console.log(res)
     if (stat.err != null){
       res.json({msg: 'fail'})
     } else{
-      mailer.send(receiver, content, `验证码`, res)
-      console.log(content)
+      if (stat.msg == 'success') {
+        mailer.send(receiver, content, `验证码`, res)
+        console.log(content)
+        res.json({msg: 'success'})
+      } else if (stat.msg == 'robotWarn') {
+        console.log("what happened")
+        res.json({msg: 'robotWarn'})
+      }
     }
   }
 })
@@ -46,9 +54,9 @@ router.post('/captcha', (req, res, next) => {
 router.post('/confirm', (req, res, next) => {
   var receiver = req.body.data.email
   var captchaCode = req.body.data.captcha
-  var req_time = moment().format("YYYY-MM-DD HH:mm:ss")
-  console.log(receiver, captchaCode, req_time)
-  db.queryAvailableData({email: receiver, captchaCode: captchaCode, req_time: req_time, available: 1}, solution)
+  // var req_time = moment().format("YYYY-MM-DD HH:mm:ss")
+  // console.log(receiver, captchaCode, req_time)
+  db.queryAvailableData({email: receiver, captchaCode: captchaCode, req_time: req_time, available: 1, ip: req.ip}, solution)
   function solution(stat) {
     var info = (req.body.data.experience === undefined) ? 'none' : `${req.body.data.experience}`
     var content = `${req.body.data.username}你好:\n` + 
@@ -70,7 +78,8 @@ router.post('/confirm', (req, res, next) => {
       else if (stat.msg == 'success'){
         mailer.send(receiver, content, `信息确认`, res)
         console.log(content)
-      }
+        res.json({msg: 'success'})
+      } else if (stat.msg == 'robotWarn') res.json({msg: stat.msg})
     }
   }
 })
