@@ -66,6 +66,7 @@ export default class extends Component {
   render() {
     console.log('欢迎来到复旦大学程序设计竞赛队主页。Create by lzmhhh123，https://github.com/lzmhhh123')
     console.log('Update by ztx97，https://github.com/zhangtianxiang')
+    console.log('Update by kleinercubs，https://github.com/kleinercubs')
     return (
       <div>
         <Divider >

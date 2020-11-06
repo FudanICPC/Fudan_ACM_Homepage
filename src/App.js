@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
+import Join from './Join'
 import About from './About'
 import Teams from './Teams'
 import Announcements from './Announcements'
@@ -15,6 +16,9 @@ export default class extends Component {
           <Switch>
             <Route exact path='/'>
               <Homepage />
+            </Route>
+            <Route path='/join'>
+              <Join />
             </Route>
             <Route path='/about'>
               <About />

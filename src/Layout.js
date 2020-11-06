@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Button, Drawer, Icon, BackTop } from 'antd'
+import { Layout, Menu, Button, Drawer, BackTop } from 'antd'
+import 'antd/dist/antd.css';
+import Icon from '@ant-design/icons'
 import { withRouter } from 'react-router'
 
 class RightMenu extends Component {
@@ -27,6 +29,7 @@ class RightMenu extends Component {
         <Menu.Item key='/announcement' className='menuItem'>通知公告</Menu.Item>
         <Menu.Item key='/teams' className='menuItem'>我们的队伍</Menu.Item>
         <Menu.Item key='/about' className='menuItem'>关于我们</Menu.Item>
+        <Menu.Item key='/join' className='menuItem'>加入我们</Menu.Item>
         <Menu.Item key='OpenJudge' className='menuItem'>OpenJudge</Menu.Item>
       </Menu>
     );
