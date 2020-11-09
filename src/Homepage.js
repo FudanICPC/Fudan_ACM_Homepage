@@ -49,16 +49,16 @@ const sponsor = [
     image: '/source/google.png'
   },
   {
+    name: 'tencent',
+    image: '/source/tencent.jpg'
+  },
+  {
     name: 'uisee',
     image: '/source/uisee.png'
   },
   {
     name: 'bytedance',
     image: '/source/bytedance.jpg'
-  },
-  {
-    name: 'tencent',
-    image: '/source/tencent.jpg'
   },
 ]
 
